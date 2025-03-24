@@ -14,7 +14,9 @@ import { FormGroup } from './components/FormGroup';
 import { Content } from './components/Content';
 import { Icon } from './components/Icon';
 import { ComboBox } from './components/ComboBox';
-
+import { Avatar } from './components/Avatar';
+import { DataGrid } from './components/DataGrid';
+import { DataTable } from './components/DataTable';
 // Importações dos componentes de Sidebar
 import { 
   Sidebar,
@@ -113,7 +115,17 @@ export const ComponentRegistry: ComponentRegistryType = {
   dropdownMenuItem: DropdownMenuItemComponent,
   
   // Label Component
-  label: LabelComponent
+  label: LabelComponent,
+
+  // AvatarUI Elements
+  avatar: Avatar, 
+
+  // Adicione o DataGrid
+  dataGrid: DataGrid,
+  table: DataGrid, // Alias para facilitar o uso
+
+   // Data & Tables
+   dataTable: DataTable,   // Versão avançada baseada no TanStack Table
 };
 
 // Função para registrar novos componentes dinamicamente

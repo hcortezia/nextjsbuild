@@ -27,6 +27,54 @@ export default function HomePage() {
     alert('Formulário de demonstração enviado!\n\n' + JSON.stringify(data, null, 2));
   };
 
+  const payments = [
+    {
+      id: "m5gr84i9",
+      amount: 316,
+      status: "success",
+      email: "ken99@example.com",
+      date: new Date(2023, 1, 15)
+    },
+    {
+      id: "3u1reuv4",
+      amount: 242,
+      status: "success",
+      email: "Abe45@example.com",
+      date: new Date(2023, 2, 20)
+    },
+    {
+      id: "derv1ws0",
+      amount: 837,
+      status: "processing",
+      email: "Monserrat44@example.com",
+      date: new Date(2023, 3, 5)
+    },
+    {
+      id: "5kma53ae",
+      amount: 874,
+      status: "success",
+      email: "Silas22@example.com",
+      date: new Date(2023, 4, 10)
+    },
+    {
+      id: "bhqecj4p",
+      amount: 721,
+      status: "failed",
+      email: "carmella@example.com",
+      date: new Date(2023, 5, 25)
+    },
+  ];
+  
+  // Handlers para as ações
+  const handleViewDetails = (payment: any) => {
+    alert(`Visualizando detalhes do pagamento #${payment.id}: R$ ${payment.amount.toFixed(2)}`);
+  };
+  
+  const handleCopyId = (payment: any) => {
+    navigator.clipboard.writeText(payment.id);
+    alert(`ID do pagamento copiado: ${payment.id}`);
+  };
+  
   // Exemplos de componentes
   const examples = {
     form: {
@@ -459,6 +507,17 @@ export default function HomePage() {
           }
         ]
       }
+    },
+    avatar: {
+      title: "Avatar",
+      description: "Elemento de avatar para exibição de imagens",
+      config: {
+        xtype: 'avatar',
+        size: 'lg',
+        src: 'https://github.com/shadcn.png',
+        className: 'rounded-full'
+      }
+    }
     }
   };
 
@@ -541,7 +600,7 @@ return <FormBuild config={formConfig} />;`;
                   {
                     xtype: 'button',
                     text: 'Ver no GitHub',
-                    variant: 'outline',
+                    variant: 'default',
                     className: 'border-white text-white hover:bg-white/10'
                   }
                 ]
