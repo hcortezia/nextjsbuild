@@ -76,7 +76,13 @@ export default function HomePage() {
   };
   
   // Exemplos de componentes
-  const examples = {
+  interface ExampleConfig {
+    title: string;
+    description: string;
+    config: ComponentConfig;
+  }
+
+  const examples: Record<string, ExampleConfig> = {
     form: {
       title: "Formulário",
       description: "Formulários declarativos com validação e estado integrados",
@@ -518,7 +524,6 @@ export default function HomePage() {
         className: 'rounded-full'
       }
     }
-    }
   };
 
   // Código simplificado para demonstração
@@ -787,7 +792,7 @@ return <FormBuild config={formConfig} />;`;
             layout: 'horizontal',
             gap: 'md',
             className: 'justify-center mb-8',
-            items: Object.entries(examples).map(([id, example]) => ({
+            items: Object.entries(examples as Record<string, any>).map(([id, example]: [string, any]) => ({
               xtype: 'button',
               text: example.title,
               variant: activeExample === id ? 'default' : 'outline',
@@ -876,9 +881,8 @@ return <FormBuild config={formConfig} />;`;
         items: [
           {
             xtype: 'container',
-            className: 'max-w-5xl mx-auto',
+            className: 'max-w-5xl mx-auto items-center justify-between',
             layout: 'horizontal',
-            className: 'items-center justify-between',
             items: [
               {
                 xtype: 'content',
@@ -935,5 +939,11 @@ return <FormBuild config={formConfig} />;`;
     ]
   };
 
-  return <FormBuild config={landingPageConfig} data={demoData} onChange={handleDemoChange} onSubmit={handleDemoSubmit} />;
+  // Renderiza o componente FormBuild com a configuração
+  return <FormBuild 
+    config={landingPageConfig} 
+    data={demoData} 
+    onChange={handleDemoChange} 
+    onSubmit={handleDemoSubmit} 
+  />;
 }
